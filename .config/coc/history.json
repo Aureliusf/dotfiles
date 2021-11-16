@@ -1,0 +1,10 @@
+{
+  "marketplace": {
+    "%2Fhome%2Faurelius": [
+      "java"
+    ],
+    "%2Fhome%2Faurelius%2Ffni": [
+      "python"
+    ]
+  }
+}

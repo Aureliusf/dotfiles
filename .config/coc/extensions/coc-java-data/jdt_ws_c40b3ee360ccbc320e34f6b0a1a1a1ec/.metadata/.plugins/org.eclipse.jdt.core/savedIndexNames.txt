@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+/home/aurelius/.config/coc/extensions/coc-java-data/jdt_ws_c40b3ee360ccbc320e34f6b0a1a1a1ec/.metadata/.plugins/org.eclipse.jdt.core
+3842426239.index
+120584473.index
