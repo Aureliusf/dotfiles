@@ -13,15 +13,15 @@
 
   outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: {
     darwinConfigurations = {
-      macbook = darwin.lib.darwinSystem {
+      hostname = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          ./configuration.nix
+          $HOME/dotfiles/.config/nix-darwin/darwin.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.aure = import ./home.nix;
+            home-manager.users.aure = import $HOME/dotfiles/.config/nix-darwin/home.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
