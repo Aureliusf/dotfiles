@@ -24,8 +24,21 @@
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
-      # Enable alternative shell support in nix-darwin.
-      # programs.fish.enable = true;
+      system = {
+        defaults = {
+          finder = {
+            _FXShowPosixPathInTitle = true; # show full path in finder title
+            AppleShowAllExtensions = true; # show all file extensions
+            AppleShowAllFiles = true; # show hidden files
+            FXEnableExtensionChangeWarning = false; # disable warning when changing file extension
+            QuitMenuItem = true; # enable quit menu item
+            ShowPathbar = true; # show path bar
+            ShowStatusBar = true; # show status bar
+          };
+        };
+      };
+      system.primaryUser = "aure";
+
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
