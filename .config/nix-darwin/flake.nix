@@ -9,6 +9,12 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
     configuration = { pkgs, ... }: {
+
+      nix.enable = false;
+      # TouchId for sudo
+      security.pam.services.sudo_local.touchIdAuth = true;
+
+
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =

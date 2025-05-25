@@ -8,12 +8,4 @@ with import <nixpkgs> {}; [
   ripgrep
   starship
 
-
-
-
-
-
-
-
-
 ]
