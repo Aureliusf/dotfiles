@@ -1,67 +1,33 @@
+# flake.nix
+
 {
+  description = "Darwin configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:lnl7/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    darwin.url = "github:lnl7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
-  let
-    configuration = { pkgs, ... }: 
-    {
+  outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: {
+    darwinConfigurations = {
+      macbook = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.aure = import ./home.nix;
 
-      nix.enable = false;
-      nix.extraOptions = ''
-        extra-platforms = x86_64-darwin aarch64-darwin
-      '';
-      # TouchId for sudo
-      security.pam.services.sudo_local.touchIdAuth = true;
-
-
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ pkgs.neovim
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
         ];
-
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
-
-      system = {
-        defaults = {
-          finder = {
-            _FXShowPosixPathInTitle = true; # show full path in finder title
-            AppleShowAllExtensions = true; # show all file extensions
-            AppleShowAllFiles = true; # show hidden files
-            FXEnableExtensionChangeWarning = false; # disable warning when changing file extension
-            QuitMenuItem = true; # enable quit menu item
-            ShowPathbar = true; # show path bar
-            ShowStatusBar = true; # show status bar
-          };
-        };
       };
-      system.primaryUser = "aure";
-
-
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 6;
-
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
-    };
-  in
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#simple
-    darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
     };
   };
 }
