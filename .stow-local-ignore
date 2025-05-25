@@ -1,0 +1,8 @@
+# ignored files to not stow
+
+  .DS_Store
+  \.git
+  \.gitignore
+
+
+  ^README.*
