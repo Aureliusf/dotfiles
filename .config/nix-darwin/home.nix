@@ -3,18 +3,21 @@
 { config, pkgs, ... }:
 
 {
-    home = {
-    username = "$USER";
-    homeDirectory = "$HOME";
-    stateVersion = "23.05";
+  home = {
+    username = "aure"; 
+    homeDirectory = "/Users/aure/";
+    stateVersion = "25.05";
 
     packages = with pkgs; [
-
       ripgrep
-
+      # Add other Home Manager specific packages here
+      # For example:
+      fzf
+      # zsh
+      # git
+      neovim
     ];
   };
-}
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -42,9 +45,23 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    EDITOR = "neovim";
+    EDITOR = "nvim"; 
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # If you want to manage your shell (like zsh) with Home Manager
+  # programs.zsh = {
+  #   enable = true;
+  #   enableAutosuggestions = true;
+  #   enableSyntaxHighlighting = true;
+  #   # ... other zsh options
+  # };
+
+  # It's common to define a primary editor here if you use it in Home Manager
+  # programs.neovim = {
+  #   enable = true;
+  #   # ... neovim config
+  # };
 }
