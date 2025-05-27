@@ -1,8 +1,3 @@
-source ~/fzf-zsh-completion.sh
-bindkey '^q' fzf_completion
-bindkey '^a' atuin-search
-
-
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -73,7 +68,21 @@ ZSH_THEME="awesomepanda"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux git 1password branch starship colorize zsh-interactive-cd vi-mode web-search z)
+plugins=(
+  tmux 
+  git 
+  1password 
+#  branch 
+  starship 
+  colorize 
+# zsh-interactive-cd 
+  vi-mode 
+  web-search 
+  z
+)
+
+source $HOME/fzf-zsh-completion.sh
+
 source $ZSH/oh-my-zsh.sh
 
 
@@ -111,12 +120,10 @@ alias cdr= " cd"
 alias nv=" nvim"
 alias pipes="pipes.sh -t 3"
 alias zshrc=" nvim ~/.zshrc"
-alias ls="eza -a --icons --color=always --group-directories-first"
+alias ls="eza -a --icons --color=always --group-directories-first -T -L=1"
+alias ll="eza -alh --color=always"
 alias nvimlua=" nvim ~/.config/nvim/init.lua"
 alias lst=" eza -a --icons --color=always --group-directories-first --tree -L 2"
-PATH=~/.console-ninja/.bin:$PATH
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-alias share=" python3 -m http.server 8080"
 
 # fzf to fuzzy find directories and cd into them
 ffd() {
@@ -150,9 +157,6 @@ export PATH="$PATH:/Users/aure/.local/bin"
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
-
-
-
-
 eval "$(ssh-agent -s)"
+
 
