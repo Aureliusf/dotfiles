@@ -2,6 +2,8 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+bindkey              '^I'         menu-complete
+bindkey "$terminfo[kcbt]" reverse-menu-complete
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,12 +74,9 @@ plugins=(
   tmux 
   git 
   1password 
-#  branch 
   starship 
   colorize 
-# zsh-interactive-cd 
   vi-mode 
-  web-search 
   z
 )
 
