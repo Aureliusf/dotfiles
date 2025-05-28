@@ -33,10 +33,15 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
-    # homebrew-emacs-plus input removed
+    #
+    # Add the mhaeuser/mhaeuser tap battery-toolkit
+    mhaeuser-tap = { 
+      url = "github:mhaeuser/homebrew-mhaeuser"; 
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, darwin, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, ... }: { # Removed homebrew-emacs-plus from outputs
+  outputs = inputs@{ nixpkgs, home-manager, darwin, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, mhaeuser-tap, ... }: { 
     darwinConfigurations = {
       macbook = darwin.lib.darwinSystem {
         system = "aarch64-darwin"; # or "x86_64-darwin"
@@ -65,7 +70,8 @@
               mutableTaps = false;
             };
           }
-        ]; };
+        ]; 
+      };
     };
   };
 }
