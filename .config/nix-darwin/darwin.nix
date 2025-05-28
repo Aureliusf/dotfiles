@@ -3,6 +3,8 @@
 { config, pkgs, ... }: 
 
 {
+# Unfree Sofware
+  nixpkgs.config.allowUnfree = true;
   nix.extraOptions = ''
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
@@ -34,6 +36,8 @@
       };
     };
   };
+
+  users.users.aure.home = "/Users/aure/";
   system.primaryUser = "aure";
 
   # Set Git commit hash for darwin-version.

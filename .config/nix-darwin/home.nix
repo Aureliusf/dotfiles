@@ -10,12 +10,14 @@
 
     packages = with pkgs; [
       ripgrep
-      # Add other Home Manager specific packages here
-      # For example:
       fzf
-      # zsh
-      # git
+      zsh
+      git
       neovim
+      tmux
+      aerospace
+      raycast
+      _1password-cli
     ];
   };
 
