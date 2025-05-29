@@ -18,6 +18,8 @@
       aerospace
       raycast
       _1password-cli
+      hexo-cli
+      nodejs
     ];
   };
 
