@@ -1,2 +1,8 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+-- nvim/init.lua
+
+require("options") -- vim native options
+require("config.lazy") -- lazy.nvim plugin manager
+
+-- Telescope
+require("plugins.telescope")
+require("config.telescope")
