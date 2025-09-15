@@ -10,7 +10,7 @@
     enable = true;
 
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake /home/aure/dotfiles/nixos";
+      update = "sudo darwin-rebuild switch --flake .#macbook";
       nv = " nvim";
       pipes = "pipes.sh -t 3";
       zshrc = " nvim ~/.zshrc";
@@ -31,6 +31,24 @@
       ];
       theme = "awesomepanda";
     };
+
+    # Carapace configuration
+    sessionVariables = {
+      CARAPACE_BRIDGES = "zsh,fish,bash,inshellisense";
+    };
+    initExtra = ''
+      # Carapace completion styling
+      zstyle ':completion:*' format 
+}
+
+\e[2;37mCompleting %d\e[m'
+      zstyle ':completion:*:git:*' group-order 'main commands' 'alias commands' 'external commands'
+    '';
+  };
+
+  programs.carapace = {
+    enable = true;
+    enableZsh = true;
   };
 }
 

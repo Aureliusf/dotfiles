@@ -18,10 +18,16 @@
       aerospace
       raycast
       _1password-cli
-      hexo-cli
+      zola
       nodejs
+      ghostscript
+      carapace-bin
     ];
   };
+  imports = [
+    ./configs/zshrc.nix
+
+  ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

@@ -15,7 +15,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Homebrew package manager support
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     nix-homebrew.inputs.nixpkgs.follows = "nixpkgs";
 
     # Optional: Declarative tap management
@@ -65,6 +65,7 @@
                 "homebrew/homebrew-core" = homebrew-core;
                 "homebrew/homebrew-cask" = homebrew-cask;
                 "homebrew/homebrew-bundle" = homebrew-bundle;
+                "mhaeuser/mhaeuser" = mhaeuser-tap;
                 # "d12frosted/homebrew-emacs-plus" = homebrew-emacs-plus; # Emacs tap removed
               };
               mutableTaps = false;
