@@ -18,6 +18,7 @@
       l = "eza -alh --color=always";
       nvimlua = " nvim ~/.config/nvim/init.lua";
       list = " eza -a --icons --color=always --group-directories-first --tree -L 2";
+      rsync-FIU = "rsync -av --delete /Users/aure/Documents/FIU /Volumes/aure/obsidian/FIU";
     };
 
     oh-my-zsh = {
@@ -36,19 +37,11 @@
     sessionVariables = {
       CARAPACE_BRIDGES = "zsh,fish,bash,inshellisense";
     };
-    initExtra = ''
-      # Carapace completion styling
-      zstyle ':completion:*' format 
-}
-
-\e[2;37mCompleting %d\e[m'
-      zstyle ':completion:*:git:*' group-order 'main commands' 'alias commands' 'external commands'
-    '';
   };
 
   programs.carapace = {
     enable = true;
-    enableZsh = true;
+    enableZshIntegration = true;
   };
 }
 

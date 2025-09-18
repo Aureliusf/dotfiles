@@ -21,7 +21,7 @@
       zola
       nodejs
       ghostscript
-      carapace-bin
+      carapace
     ];
   };
   imports = [
