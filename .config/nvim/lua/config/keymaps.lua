@@ -1,12 +1,25 @@
 -- nvim/lua/config/keymaps.lua
+-- Centralized keymaps
 
--- Telescope
-local telescope = require("telescope.builtin")
+local function set_keymaps()
+  local builtin = require("telescope.builtin")
 
-vim.keymap.set("n", "<leader>ff", function()
-	require("telescope.builtin").find_files({ hidden = true })
-end, { desc = "Telescope find files" })
+  -- Telescope
+  vim.keymap.set("n", "<leader>ff", function()
+    builtin.find_files({ hidden = true })
+  end, { desc = "Telescope find files" })
+  vim.keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Telescope live grep" })
+  vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+  vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
-vim.keymap.set("n", "<leader>fw", telescope.live_grep, { desc = "Telescope live grep" })
-vim.keymap.set("n", "<leader>fb", telescope.buffers, { desc = "Telescope buffers" })
-vim.keymap.set("n", "<leader>fh", telescope.help_tags, { desc = "Telescope help tags" })
+  -- Treesj
+  vim.keymap.set("n", "J", "<cmd>TSJToggle<cr>", { desc = "Join Toggle" })
+
+  -- Dial
+  vim.keymap.set("n", "<C-a>", require("dial.map").inc_normal(), { desc = "Increment" })
+  vim.keymap.set("n", "<C-x>", require("dial.map").dec_normal(), { desc = "Decrement" })
+end
+
+return {
+  set = set_keymaps,
+}

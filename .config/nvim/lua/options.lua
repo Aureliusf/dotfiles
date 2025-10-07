@@ -1,7 +1,5 @@
 -- nvim/lua/options.lua
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 vim.o.clipboard = "unnamedplus"
 
