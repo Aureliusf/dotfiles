@@ -53,6 +53,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.aure = import ./.config/nix-darwin/home.nix;
+            home-manager.backupFileExtension = "backup";
           }
           nix-homebrew.darwinModules.nix-homebrew
           {
